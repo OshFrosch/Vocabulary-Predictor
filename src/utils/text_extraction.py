@@ -1,7 +1,7 @@
-from pdfminer.high_level import extract_text
-import cv2
-import pytesseract
-
+#from pdfminer.high_level import extract_text
+#import cv2
+#import pytesseract
+from bs4 import BeautifulSoup
 
 def extract_from_file(filepath: str):
     """
@@ -18,17 +18,37 @@ def extract_from_file(filepath: str):
         return text
 
     # PDF-file
-    if filepath.endswith(".pdf"):
-        text = extract_text(filepath)
+    #if filepath.endswith(".pdf"):
+        #text = extract_text(filepath)
+        #return text
+
+    if filepath.endswith(".html"):
+        with open(filepath, "rt") as file:
+
+            soup = BeautifulSoup(file.read(), features="html.parser")
+
+        # get text
+        text = soup.get_text()
+
+        # break into lines and remove leading and trailing space on each
+        lines = (line.strip() for line in text.splitlines())
+        # break multi-headlines into a line each
+        chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+        # drop blank lines
+        text = '\n'.join(chunk for chunk in chunks if chunk)
         return text
 
-    # TODO: extract text from HTML file
-
     # TODO
-    if filepath.endswith(".jpeg") or filepath.endswith(".jpg") or filepath.endswith(".png"):
-        print("text can not be extracted from images yet")
-        return None
+    # if filepath.endswith(".jpeg") or filepath.endswith(".jpg") or filepath.endswith(".png"):
+    #     print("text can not be extracted from images yet")
+    #     return None
 
-    else:
-        print("file name does not end with eiter .pdf, .txt, .HTML or .image")
-        return None
+    # else:
+    #     print("file name does not end with eiter .pdf, .txt, .HTML or .image")
+    #     return None
+
+
+
+#if __name__ == "__main__":
+#    path = "/Volumes/Backup/no_problem/1904/1904.01531.html"
+#    extract_from_file(path)
