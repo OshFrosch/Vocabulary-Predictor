@@ -8,11 +8,22 @@ def extract_from_file(filepath):
     :return: text as string
     """
 
-    # TODO: if file is PDF
-    if True:
+    # PDF-file
+    if filepath.endswith(".pdf"):
         text = extract_text(filepath)
+        return text
+
+    # txt-file
+    if filepath.endswith(".txt"):
+        file = open(filepath, "rt")
+        text = file.read()
+        file.close()
+        return text
+
 
     # TODO: if file is txt, extract text from txt file
     # TODO: add additional file types like images
 
-    return text
+    else:
+        print("file name does not end with eiter .pdf, .txt, .HTML or .image")
+        return None
