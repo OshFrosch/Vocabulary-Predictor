@@ -1,3 +1,9 @@
 pdfminer
 cv2
 pytesseract
+
+spacy~=2.3.2
+regex~=2020.11.13
+wordfreq~=2.3.2
+nltk~=3.5
+numpy~=1.19.2
