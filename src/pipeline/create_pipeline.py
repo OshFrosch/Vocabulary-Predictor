@@ -1,12 +1,11 @@
 import numpy as np
 import spacy
+from pipeline.pipeline_components.pipe_difficulty import get_difficulty
+from pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
+from pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
+from pipeline.pipeline_components.pipe_relative_frequency import relative_freq
+from pipeline.pipeline_components.pipe_wordcount import wordcount
 from spacy.tokens import Doc, Token
-
-from src.pipeline.pipeline_components.pipe_difficulty import get_difficulty
-from src.pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
-from src.pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
-from src.pipeline.pipeline_components.pipe_relative_frequency import relative_freq
-from src.pipeline.pipeline_components.pipe_wordcount import wordcount
 
 
 def create_pipeline():

@@ -1,4 +1,4 @@
-from src.utils.pipeline_utils.get_entities import get_entities
+from utils.pipeline_utils.get_entities import get_entities
 
 
 def filter_tokens(doc):
