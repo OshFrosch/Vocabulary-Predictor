@@ -1,6 +1,19 @@
 # vocabulary-extraction
 Find the vocabulary you need to learn to understand some article or book.
 
+## How to use
+1. Install pipenv  
+`pip install pipenv`
+2. Create an empty .env file  
+`touch .env`
+3. Install pip dependencies  
+`pip install -r requirements.txt`
+4. Download nltk and spacy datasets
+`. ./download_datasets.sh`
+5. Run  
+`pipenv run main`
+6. Test  
+`pipenv run test`
 
 ### Team Members
 * Lukas Ballweg (lukas.ballweg@riseup.net)
