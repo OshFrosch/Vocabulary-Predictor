@@ -1,7 +1,8 @@
-#from pdfminer.high_level import extract_text
-#import cv2
-#import pytesseract
+# from pdfminer.high_level import extract_text
+# import cv2
+# import pytesseract
 from bs4 import BeautifulSoup
+
 
 def extract_from_file(filepath: str):
     """
@@ -18,9 +19,9 @@ def extract_from_file(filepath: str):
         return text
 
     # PDF-file
-    #if filepath.endswith(".pdf"):
-        #text = extract_text(filepath)
-        #return text
+    # if filepath.endswith(".pdf"):
+    # text = extract_text(filepath)
+    # return text
 
     if filepath.endswith(".html"):
         with open(filepath, "rt") as file:
@@ -35,7 +36,7 @@ def extract_from_file(filepath: str):
         # break multi-headlines into a line each
         chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
         # drop blank lines
-        text = '\n'.join(chunk for chunk in chunks if chunk)
+        text = "\n".join(chunk for chunk in chunks if chunk)
         return text
 
     # TODO
@@ -48,7 +49,6 @@ def extract_from_file(filepath: str):
     #     return None
 
 
-
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    path = "/Volumes/Backup/no_problem/1904/1904.01531.html"
 #    extract_from_file(path)

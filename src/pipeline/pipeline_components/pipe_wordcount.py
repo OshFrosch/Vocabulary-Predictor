@@ -1,5 +1,3 @@
-
-
 def wordcount(doc):
     """gives an overall word count"""
 
@@ -11,6 +9,6 @@ def wordcount(doc):
 
     doc._.wordcount = word_count
 
-    print(f'{word_count} overall words')
+    print(f"{word_count} overall words")
 
     return doc

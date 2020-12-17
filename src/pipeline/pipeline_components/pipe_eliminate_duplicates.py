@@ -1,5 +1,3 @@
-
-
 def elim_dup(doc):
     """eliminates all duplicates and counts the appearance of the included words"""
 

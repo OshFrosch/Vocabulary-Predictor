@@ -11,7 +11,7 @@ def filter_tokens(doc):
         if not token.is_alpha or token.is_stop:
             token._.is_excluded = True
         # filter part-of-speech
-        if token.pos_ not in ['NOUN', 'VERB', 'ADJ', 'ADV']:  # ADV?
+        if token.pos_ not in ["NOUN", "VERB", "ADJ", "ADV"]:  # ADV?
             token._.is_excluded = True
         # filter entities
         if token.text in entities:
