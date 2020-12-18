@@ -118,7 +118,7 @@ generalized on other domains. This tasks could include:
 * Tuning parameters including frequency, weights etc. on a given dataset
 * Training an entity in spacy on technical terms on a given dataset with rule based annotations
 * Using SVD on corpus to get the relationship of word to their topics and the topics of the input text.
-
+* Using word vector distances to the keywords (keyword section) of our dataset (dataset specific and therefore not generalizable but still fun)
 
 ### High-level Architecture Description
 Our architecture does only consists of our [pipeline](src/pipeline) our [utils](src/utils) for input/output etc.
