@@ -7,10 +7,18 @@ verify_ssl = true
 flake8 = "*"
 autopep8 = "*"
 coverage = "*"
+pytest = "*"
 
 [packages]
 pre-commit = "*"
 beautifulsoup4 = "*"
+jupyter = "*"
+notebook = "*"
+spacy = "*"
+nltk = "*"
+matplotlib = "*"
+tqdm = "*"
+pandas = "*"
 
 [scripts]
 test = "coverage run -m unittest discover -s ./src/tests -p test_*.py"
