@@ -1,6 +1,4 @@
-# from pdfminer.high_level import extract_text
-# import cv2
-# import pytesseract
+from pdfminer.high_level import extract_text
 from bs4 import BeautifulSoup
 
 
@@ -19,9 +17,9 @@ def extract_from_file(filepath: str):
         return text
 
     # PDF-file
-    # if filepath.endswith(".pdf"):
-    # text = extract_text(filepath)
-    # return text
+    if filepath.endswith(".pdf"):
+        text = extract_text(filepath)
+        return text
 
     if filepath.endswith(".html"):
         with open(filepath, "rt") as file:
@@ -40,15 +38,10 @@ def extract_from_file(filepath: str):
         return text
 
     # TODO
-    # if filepath.endswith(".jpeg") or filepath.endswith(".jpg") or filepath.endswith(".png"):
-    #     print("text can not be extracted from images yet")
-    #     return None
+    if filepath.endswith(".jpeg") or filepath.endswith(".jpg") or filepath.endswith(".png"):
+        print("text can not be extracted from images yet")
+        return None
 
-    # else:
-    #     print("file name does not end with eiter .pdf, .txt, .HTML or .image")
-    #     return None
-
-
-# if __name__ == "__main__":
-#    path = "/Volumes/Backup/no_problem/1904/1904.01531.html"
-#    extract_from_file(path)
+    else:
+        print("file name does not end with eiter .pdf, .txt, .HTML or .image")
+        return None
