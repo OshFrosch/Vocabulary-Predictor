@@ -1,5 +1,5 @@
-from pdfminer.high_level import extract_text
 from bs4 import BeautifulSoup
+from pdfminer.high_level import extract_text
 
 
 def extract_from_file(filepath: str):
@@ -38,7 +38,11 @@ def extract_from_file(filepath: str):
         return text
 
     # TODO
-    if filepath.endswith(".jpeg") or filepath.endswith(".jpg") or filepath.endswith(".png"):
+    if (
+        filepath.endswith(".jpeg")
+        or filepath.endswith(".jpg")
+        or filepath.endswith(".png")
+    ):
         print("text can not be extracted from images yet")
         return None
 
