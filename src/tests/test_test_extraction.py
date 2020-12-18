@@ -1,6 +1,6 @@
 import os
 
-from src.utils.text_extraction import extract_from_file
+from src.utils.input_utils.text_extraction import extract_from_file
 
 path = os.path.join(os.path.dirname(__file__))
 

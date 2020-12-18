@@ -48,7 +48,7 @@ We will focus on the retrieval of the data in the subsection [Data Analysis](#da
 > **Goal:** The list should contain each noun, verb, and adjective of the text in its root form and should not have duplicates or closely related words.
 
 As a little bonus we already implemented the
-[extraction of text](/src/utils/text_extraction.py) regarding these channels:
+[extraction of text](/src/utils/input_utils/text_extraction.py) regarding these channels:
 - [x] HTML-raw text extraction
 - [x] PDF-raw text extraction
 - [x] Image-raw text extraction
@@ -96,7 +96,7 @@ This is given to the fact, that we chose to start with a rather general approach
 Which means, that we do not tune our pipeline components according to a dataset.
 (Which especially made sense as long as we did not have access to a comprehensive dataset)
 This left us with a working pipeline providing us with reasonable good results on a arbitrary text.
-At this state of the project we have a few ways to go next:
+At this state of the project we have a few options to proceed:
 
 #### 1. Key Phrase Extraction (subtask 4)
 As we did not include this part in our pipeline yet, this leaves us with great room for improvement.
@@ -105,9 +105,9 @@ are therefore most relevant to know and comprehend. Which means we still can get
 this problem best. Besides Key Phrase Extractions we want to try out other related approaches to solve this 
 subtask as good as possible. Some of our ideas are: 
 
-* Clustering wordvectors and weight the vocabs on the size of each cluster. Words beeing part of a big cluster an therefore a dominant topic of the text will be more relevant for the user. 
+* Clustering wordvectors and weight the vocabs on the size of each cluster. Words being part of a big cluster an therefore a dominant topic of the text will be more relevant for the user. 
 * Using SVD on input parts to get the relationship of word to their topics and the topics of the input text.
-* Key Phrase Extraction of the given input
+* Key Phrase Extraction of the given input (data driven?)
 
 #### 2. Data driven approach
 Since we have a dataset to work with, we can tune our pipeline according to this dataset. This will hopefully
@@ -121,7 +121,22 @@ generalized on other domains. This tasks could include:
 
 
 ### High-level Architecture Description
-<!-- TODO: Hier muss die Ordnerstruktur und die Zusammensetzung der Processing Pipeline erklärt werden -->
+Our architecture does only consists of our [pipeline](src/pipeline) our [utils](src/utils) for input/output etc.
+and our [tests](src/tests). The data exploration and the running first pipeline can also be found in our [jupyter
+notebooks](src/notebooks).
+
+The current [pipeline](src/pipeline) should be relatively clear at this point, but has this overview:
+
+* input: [text_extraction.py](src/utils/input_utils/text_extraction.py)
+* pipeline: [create_pipeline.py](src/pipeline/create_pipeline.py)
+    * [pipe_wordcount.py](src/pipeline/pipeline_components/pipe_wordcount.py)
+    * [pipe_filter_tokens.py](src/pipeline/pipeline_components/pipe_filter_tokens.py)
+    * [pipe_eliminate_duplicates.py](src/pipeline/pipeline_components/pipe_eliminate_duplicates.py)
+    * [pipe_relative_frequency.py](src/pipeline/pipeline_components/pipe_relative_frequency.py)
+    * [pipe_difficulty.py](src/pipeline/pipeline_components/pipe_difficulty.py)
+* output: [create_df_from_doc.py](src/utils/output_utils/create_df_from_doc.py) 
+
+
 
 ##Data-Analysis
 ### The arXMLiv 08.2018 dataset
