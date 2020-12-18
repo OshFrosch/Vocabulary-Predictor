@@ -14,6 +14,13 @@ Find the vocabulary you need to learn to understand some article or book.
 `pipenv run main`
 6. Test
 `pipenv run test`
+7. Place the dataset in the `src/data` folder:
+```
+unzip arXMLiv_08_2018_no_problem.zip -d ${REPO_ROOT}/src/data
+```
+
+
+
 
 ### Team Members
 * Lukas Ballweg (lukas.ballweg@riseup.net)
@@ -146,10 +153,7 @@ This dataset is a large collection of HTML5 scientific papers provided by the he
 
 For our purposes the `arXMLiv_08_2018_no_problem.zip` is sufficient, as in the first project iteration we expect the input corpora to be well formatted without any conversion errors.
 
-Please place the dataset in the `src/data` folder:
-```
-unzip arXMLiv_08_2018_no_problem.zip -d ${REPO_ROOT}/src/data
-```
+
 The dataset consists out of 150701 html-files stored in 337 folders and take up roughly 60GB of storage. The only useful metadata associated with these files is their [arXiv-Identifier](https://arxiv.org/help/arxiv_identifier) which is used as the filename. The old version of the arXiv-identifier might allow us to double check clustering by using the embedded scientific field name as second clustering method and check for similiarities. The new version doesn't allow this. Further analysis is needed.
 
 Each HTML5 file contains a styled representation of the original scientific paper latex document excluding any original images. The conversion tool LateXML converted formulas into MathML-tags and added an additional footer.
