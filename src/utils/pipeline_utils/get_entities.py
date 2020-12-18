@@ -2,6 +2,8 @@ import regex as re
 
 
 def get_entities(doc):
+    """returns all entities of a text split into single words"""
+
     entities = []
 
     for ent in doc.ents:

@@ -3,6 +3,8 @@ from wordfreq import zipf_frequency
 
 
 def get_difficulty(doc):
+    """sets the token attribute ._.difficulty according to
+    its rareness and syllable count"""
 
     for token in doc:
         if not token._.is_excluded:

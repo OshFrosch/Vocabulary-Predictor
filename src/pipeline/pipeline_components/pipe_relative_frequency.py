@@ -2,7 +2,7 @@ from wordfreq import word_frequency
 
 
 def relative_freq(doc):
-    """calculating the relativ frequency of a included word"""
+    """calculating the relative frequency of a included word"""
 
     maw = 20  # maximal appearance weight
 

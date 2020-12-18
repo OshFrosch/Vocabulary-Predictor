@@ -2,7 +2,7 @@ from utils.pipeline_utils.get_entities import get_entities
 
 
 def filter_tokens(doc):
-    """filters all tokens"""
+    """filters all tokens by stopwords, P-O-S and entities"""
 
     entities = get_entities(doc)
 
