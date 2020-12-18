@@ -29,7 +29,7 @@ unzip arXMLiv_08_2018_no_problem.zip -d ${REPO_ROOT}/src/data
 * Philipp Walz (philipp@walz.tech)
 
 ### Libraries / Existing Code Fragements
-The main processing steps are performed with the help of space, nltk, regex and wordfreq.
+The main processing steps are performed with the help of spaCy, nltk, regex and wordfreq.
 For a complete list of project dependencies look at the [requirements.txt](requirements.txt)
 
 Apart from that no other existing code fragments were used.
@@ -59,7 +59,7 @@ As a little bonus we already implemented the
 [extraction of text](/src/utils/input_utils/text_extraction.py) regarding these channels:
 - [x] HTML-raw text extraction
 - [x] PDF-raw text extraction
-- [x] Image-raw text extraction
+- [ ] Image-raw text extraction
 
 We used spacy to implement our [pipeline processing the input](/src/pipeline/create_pipeline.py).
 In the first step we already implemented:
