@@ -3,7 +3,7 @@ import pandas as pd
 
 def create_df_from_doc(doc):
     """creates a df with of all included tokens
-     with their attributes of the vocabulary list"""
+    with their attributes of the vocabulary list"""
 
     data = []
     for token in doc:
