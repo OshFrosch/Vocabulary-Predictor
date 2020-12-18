@@ -2,18 +2,25 @@
 Find the vocabulary you need to learn to understand some article or book.
 
 ## How to use
-1. Install pipenv  
+1. Install pipenv
 `pip install pipenv`
-2. Create an empty .env file  
+2. Create an empty .env file
 `touch .env`
-3. Install pip dependencies  
+3. Install pip dependencies
 `pip install -r requirements.txt`
 4. Download nltk and spacy datasets
 `. ./download_datasets.sh`
-5. Run  
+5. Run
 `pipenv run main`
-6. Test  
+6. Test
 `pipenv run test`
+7. Place the dataset in the `src/data` folder:
+```
+unzip arXMLiv_08_2018_no_problem.zip -d ${REPO_ROOT}/src/data
+```
+
+
+
 
 ### Team Members
 * Lukas Ballweg (lukas.ballweg@riseup.net)
@@ -22,19 +29,19 @@ Find the vocabulary you need to learn to understand some article or book.
 * Philipp Walz (philipp@walz.tech)
 
 ### Libraries / Existing Code Fragements
-The main processing steps are performed with the help of space, nltk, regex and wordfreq. 
+The main processing steps are performed with the help of space, nltk, regex and wordfreq.
 For a complete list of project dependencies look at the [requirements.txt](requirements.txt)
 
 Apart from that no other existing code fragments were used.
 
 
 ## Project State
-<!-- TODO: Hier pro Subgoal die Einzel-Tasks (z.B. die pipeline steps) 
+<!-- TODO: Hier pro Subgoal die Einzel-Tasks (z.B. die pipeline steps)
 auflisten und für die fertigen einen Haken setzen Kommentare mit `>` um zu Zusatzinfos zu geben-->
 
 **For now we mainly focused on two main tasks:**
 * retrieving the Dataset and preparing data driven approaches
-* building a first general data independent pipeline to solve our subtasks  
+* building a first general data independent pipeline to solve our subtasks
 
 
 ### Planning State and Future Planning
@@ -73,7 +80,7 @@ The difficulty of the words is based on their overall frequency in the given lan
 #### Subgoal 3: Identification of heavily used words
 > Rare words by nature tend to be important if they are still heavily used. We can identify which words occur above their average, by using a **Bag of Words** or other **statistical** approach. For Example: If **Goalkeeper** has a 1:x appearance in the text but a 1:y overall appearance and x << y then we can infer that this word is relevant in this text.
 
-> **Goal:** Having a weighted numerical score representing relative frequency  
+> **Goal:** Having a weighted numerical score representing relative frequency
 
 Our pipeline already includes a relative frequency rating based on an overall frequency
 of the word in the given language. This metric seems to be promising for further estimation:
@@ -101,9 +108,9 @@ At this state of the project we have a few options to proceed:
 #### 1. Key Phrase Extraction (subtask 4)
 As we did not include this part in our pipeline yet, this leaves us with great room for improvement.
 The latent goal behind this subtask is to estimate the words which carry the most meaning of the text and
-are therefore most relevant to know and comprehend. Which means we still can get creative on how to solve 
-this problem best. Besides Key Phrase Extractions we want to try out other related approaches to solve this 
-subtask as good as possible. Some of our ideas are: 
+are therefore most relevant to know and comprehend. Which means we still can get creative on how to solve
+this problem best. Besides Key Phrase Extractions we want to try out other related approaches to solve this
+subtask as good as possible. Some of our ideas are:
 
 * Clustering wordvectors and weight the vocabs on the size of each cluster. Words being part of a big cluster an therefore a dominant topic of the text will be more relevant for the user. 
 * Using SVD on input parts to get the relationship of word to their topics and the topics of the input text.
@@ -112,7 +119,7 @@ subtask as good as possible. Some of our ideas are:
 #### 2. Data driven approach
 Since we have a dataset to work with, we can tune our pipeline according to this dataset. This will hopefully
 provide us with a proof of concept, that we can improve our results, if we focus on a given domain. The goal
-would be to solve data specific tasks and optimise our results on the data with approaches which can be 
+would be to solve data specific tasks and optimise our results on the data with approaches which can be
 generalized on other domains. This tasks could include:
 
 * Tuning parameters including frequency, weights etc. on a given dataset
@@ -134,22 +141,29 @@ The current [pipeline](src/pipeline) should be relatively clear at this point, b
     * [pipe_eliminate_duplicates.py](src/pipeline/pipeline_components/pipe_eliminate_duplicates.py)
     * [pipe_relative_frequency.py](src/pipeline/pipeline_components/pipe_relative_frequency.py)
     * [pipe_difficulty.py](src/pipeline/pipeline_components/pipe_difficulty.py)
-* output: [create_df_from_doc.py](src/utils/output_utils/create_df_from_doc.py) 
+* output: [create_df_from_doc.py](src/utils/output_utils/create_df_from_doc.py)
 
 
 
-##Data-Analysis
+## Data-Analysis
 ### The arXMLiv 08.2018 dataset
 
-We are primarily using the [arXMLiv 08.2018](https://sigmathling.kwarc.info/resources/arxmliv-dataset-082018/) data set. 
+We are primarily using the [arXMLiv 08.2018](https://sigmathling.kwarc.info/resources/arxmliv-dataset-082018/) data set.
 This dataset is a large collection of HTML5 scientific papers provided by the he [KWARC](https://kwarc.info/) research group.
 
-For our purposes the `arXMLiv_08_2018_no_problem.zip` is sufficient, as in the first project iteration we expect the input corpora to be well formatted without any conversion errors.  
+For our purposes the `arXMLiv_08_2018_no_problem.zip` is sufficient, as in the first project iteration we expect the input corpora to be well formatted without any conversion errors.
 
-Please place the dataset in the `src/data` folder:
-```
-unzip arXMLiv_08_2018_no_problem.zip -d ${REPO_ROOT}/src/data
-```
-<Hier hab ich mal alles bezüglich des Datensets hingemacht>
-- [x] Choosing the dataset
-- [ ] Dataset retrieval
+
+The dataset consists out of 150701 html-files stored in 337 folders and take up roughly 60GB of storage. The only useful metadata associated with these files is their [arXiv-Identifier](https://arxiv.org/help/arxiv_identifier) which is used as the filename. The old version of the arXiv-identifier might allow us to double check clustering by using the embedded scientific field name as second clustering method and check for similiarities. The new version doesn't allow this. Further analysis is needed.
+
+Each HTML5 file contains a styled representation of the original scientific paper latex document excluding any original images. The conversion tool LateXML converted formulas into MathML-tags and added an additional footer.
+Therefore it is necessary to drop all ```math```and ```footer```-tags before using ```BeautifulSoup4.get_text()``` to extract usable text. This text needs further postprocessing like lowercasing or duplicate-whitespace removal.
+
+[An initial exploratory jupyter notebook](https://github.com/walzph/vocabulary-extraction/blob/develop/src/notebooks/explore_dataset.ipynb) implements these and additional simplification steps to get a better understanding of the dataset and it's size.
+Initial estimations suggest that this dataset contains about 321,639,330 tokens from a set of 715,300 unique tokens. These estimates will vary widely depending on the used clean up, tokenizing and stemming functions.
+
+### Accessing the dataset
+
+The necessary preprocessing of these files takes a considerable amount of time. Applying the ```get_text(file)```-method of the exploratory notebook takes about 2 seconds per file. Rerunning this computation every time would take up a lot of development time. Fortunately this results in a string length reduction down to 10%-20% percent of the original raw text so a caching method is viable. [This Issue](https://github.com/walzph/vocabulary-extraction/issues/8) outlines such a caching dataset interface.
+
+

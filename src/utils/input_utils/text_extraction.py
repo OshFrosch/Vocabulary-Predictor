@@ -22,6 +22,8 @@ def extract_from_file(filepath: str):
         return text
 
     if filepath.endswith(".html"):
+        # TODO very basic implementation, needs to implement further postprocessing. For example as outlined in the explore_dataset-notebook.
+
         with open(filepath, "rt") as file:
 
             soup = BeautifulSoup(file.read(), features="html.parser")
