@@ -3,6 +3,7 @@ import spacy
 from pipeline.pipeline_components.pipe_difficulty import get_difficulty
 from pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
 from pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
+from pipeline.pipeline_components.pipe_ranking import get_ranking
 from pipeline.pipeline_components.pipe_relative_frequency import relative_freq
 from pipeline.pipeline_components.pipe_wordcount import wordcount
 from spacy.tokens import Doc, Token
@@ -28,5 +29,8 @@ def create_pipeline():
 
     Token.set_extension("difficulty", default=0, force=True)
     nlp.add_pipe(get_difficulty)
+
+    Token.set_extension("ranking", default=0, force=True)
+    nlp.add_pipe(get_ranking)
 
     return nlp
