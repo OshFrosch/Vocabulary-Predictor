@@ -43,6 +43,7 @@ auflisten und für die fertigen einen Haken setzen Kommentare mit `>` um zu Zusa
 * retrieving the Dataset and preparing data driven approaches
 * building a first general data independent pipeline to solve our subtasks
 
+We haven't started creating an approach for evaluating our pipeline. This is part of the upcomming work in January, now that we have an overview over our first baseline pipeline and it's components.
 
 ### Planning State and Future Planning
 
@@ -112,7 +113,7 @@ are therefore most relevant to know and comprehend. Which means we still can get
 this problem best. Besides Key Phrase Extractions we want to try out other related approaches to solve this
 subtask as good as possible. Some of our ideas are:
 
-* Clustering wordvectors and weight the vocabs on the size of each cluster. Words being part of a big cluster an therefore a dominant topic of the text will be more relevant for the user. 
+* Clustering wordvectors and weight the vocabs on the size of each cluster. Words being part of a big cluster an therefore a dominant topic of the text will be more relevant for the user.
 * Using SVD on input parts to get the relationship of word to their topics and the topics of the input text.
 * Key Phrase Extraction of the given input (data driven?)
 
