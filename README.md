@@ -96,6 +96,9 @@ of the word in the given language. This metric seems to be promising for further
 We did not tackle subgoal 4 yet:
 - [ ] Key phrase detection
 
+#### Overall ranking
+We implemented a basic overall ranking that is calculated from the difficulty and the relative frequency with one weighting factor for each of them. 
+
 ### Future Planning:
 
 #### Reflecting
