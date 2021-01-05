@@ -13,7 +13,7 @@ def create_pipeline():
     """creates a spacy pipeline containing all
     steps to extract vocabularies from a text"""
 
-    nlp = spacy.load("en_core_web_sm", disable=["parser"])
+    nlp = spacy.load("en_core_web_lg", disable=["parser"])
 
     Doc.set_extension("wordcount", default=0, force=True)
     nlp.add_pipe(wordcount)
