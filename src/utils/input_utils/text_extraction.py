@@ -29,14 +29,14 @@ def extract_from_file(filepath: str):
             soup = BeautifulSoup(file.read(), features="html.parser")
 
         # get text
-        text = soup.get_text()
+        for script in soup(["math", "footer"]):
+            script.extract()
 
-        # break into lines and remove leading and trailing space on each
-        lines = (line.strip() for line in text.splitlines())
-        # break multi-headlines into a line each
-        chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-        # drop blank lines
-        text = "\n".join(chunk for chunk in chunks if chunk)
+        # get text
+        text = soup.get_text()
+        text = text.lower()
+        text = text.replace("\n", " ")
+
         return text
 
     # TODO
