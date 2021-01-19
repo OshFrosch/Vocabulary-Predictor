@@ -1,3 +1,7 @@
+# Data directory
+/src/data/no_problem/*
+/src/data/text_files/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -134,3 +138,4 @@ dmypy.json
 
 # VS Code IDE
 .vscode/
+src/data/no_problem
