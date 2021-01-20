@@ -1,4 +1,6 @@
+import spacy
 from pipeline.create_pipeline import create_pipeline
+from spacy.matcher import PhraseMatcher
 from utils.output_utils.create_df_from_doc import create_df_from_doc
 
 from src.utils.input_utils.text_extraction import extract_from_file
