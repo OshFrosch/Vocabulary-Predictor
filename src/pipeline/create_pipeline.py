@@ -2,6 +2,7 @@ import numpy as np
 import spacy
 from pipeline.pipeline_components.pipe_difficulty import get_difficulty
 from pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
+from pipeline.pipeline_components.pipe_example_phrase import get_example_phrase
 from pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
 from pipeline.pipeline_components.pipe_ranking import get_ranking
 from pipeline.pipeline_components.pipe_relative_frequency import relative_freq
@@ -32,5 +33,8 @@ def create_pipeline():
 
     Token.set_extension("ranking", default=0, force=True)
     nlp.add_pipe(get_ranking)
+
+    Token.set_extension("example_phase", default="", force=True)
+    nlp.add_pipe(get_example_phrase)
 
     return nlp
