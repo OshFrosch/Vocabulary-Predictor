@@ -15,11 +15,19 @@ def create_df_from_doc(doc):
                     token._.appearance,
                     token._.difficulty,
                     token._.relative_freq,
+                    token._.ranking,
                 )
             )
     df = pd.DataFrame(
         data,
-        columns=["token", "lemma", "appearance", "difficulty", "relative frequency"],
+        columns=[
+            "token",
+            "lemma",
+            "appearance",
+            "difficulty",
+            "rel. frequency",
+            "ranking",
+        ],
     )
 
-    return df
+    return df.sort_values("ranking", ascending=False)
