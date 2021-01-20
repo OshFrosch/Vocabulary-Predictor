@@ -18,7 +18,11 @@ Find the vocabulary you need to learn to understand some article or book.
 ```
 unzip arXMLiv_08_2018_no_problem.zip -d ${REPO_ROOT}/src/data
 ```
-
+8. Preprocess a part of the dataset
+```
+cd src/utils/input_utils
+python data_handling.py
+```
 
 
 
@@ -97,7 +101,7 @@ We did not tackle subgoal 4 yet:
 - [ ] Key phrase detection
 
 #### Overall ranking
-We implemented a basic overall ranking that is calculated from the difficulty and the relative frequency with one weighting factor for each of them. 
+We implemented a basic overall ranking that is calculated from the difficulty and the relative frequency with one weighting factor for each of them.
 
 ### Future Planning:
 

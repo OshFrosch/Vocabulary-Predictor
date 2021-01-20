@@ -1,5 +1,3 @@
-
-
 def filter_tokens(doc):
     """filters all tokens by stopwords, P-O-S and entities"""
 
