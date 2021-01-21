@@ -16,7 +16,8 @@ def create_df_from_doc(doc):
                     token._.difficulty,
                     token._.relative_freq,
                     token._.ranking,
-                    token._.example_phase,
+                    token._.cluster,
+                    token._.example_phrase,
                 )
             )
     df = pd.DataFrame(
@@ -28,6 +29,7 @@ def create_df_from_doc(doc):
             "difficulty",
             "rel. frequency",
             "ranking",
+            "cluster",
             "example phrase",
         ],
     )
