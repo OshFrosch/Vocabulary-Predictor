@@ -20,7 +20,7 @@ def get_example_phrase(doc):
         if not token._.is_excluded:
             phrases = token_sentences[token.text]
             best_phrase = min(phrases, key=lambda item: (item[1]))[0]
-            token._.example_phase = best_phrase
+            token._.example_phrase = best_phrase
     return doc
 
 

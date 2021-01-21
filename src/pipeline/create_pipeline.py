@@ -34,7 +34,7 @@ def create_pipeline():
     Token.set_extension("ranking", default=0, force=True)
     nlp.add_pipe(get_ranking)
 
-    Token.set_extension("example_phase", default=[], force=True)
+    Token.set_extension("example_phrase", default=[], force=True)
     nlp.add_pipe(get_example_phrase)
 
     return nlp
