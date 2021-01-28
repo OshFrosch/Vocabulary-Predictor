@@ -1,6 +1,7 @@
 # Data directory
 /src/data/no_problem/*
 /src/data/text_files/*
+/src/data/cwishareddataset/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
