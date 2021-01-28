@@ -1,5 +1,6 @@
-from utils.pipeline_utils.syllable_counter import syllable_count
 from wordfreq import zipf_frequency
+
+from src.utils.pipeline_utils.syllable_counter import syllable_count
 
 
 def get_difficulty(doc):

@@ -1,14 +1,18 @@
 import numpy as np
 import spacy
-from pipeline.pipeline_components.pipe_difficulty import get_difficulty
-from pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
-from pipeline.pipeline_components.pipe_example_phrase import get_example_phrase
-from pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
-from pipeline.pipeline_components.pipe_ranking import get_ranking
-from pipeline.pipeline_components.pipe_wordcluster import cluster_words, exclude_smallest_clusters
-from pipeline.pipeline_components.pipe_relative_frequency import relative_freq
-from pipeline.pipeline_components.pipe_wordcount import wordcount
 from spacy.tokens import Doc, Token
+
+from src.pipeline.pipeline_components.pipe_difficulty import get_difficulty
+from src.pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
+from src.pipeline.pipeline_components.pipe_example_phrase import get_example_phrase
+from src.pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
+from src.pipeline.pipeline_components.pipe_ranking import get_ranking
+from src.pipeline.pipeline_components.pipe_relative_frequency import relative_freq
+from src.pipeline.pipeline_components.pipe_wordcluster import (
+    cluster_words,
+    exclude_smallest_clusters,
+)
+from src.pipeline.pipeline_components.pipe_wordcount import wordcount
 
 
 def create_pipeline():
@@ -32,7 +36,7 @@ def create_pipeline():
     Token.set_extension("difficulty", default=0, force=True)
     nlp.add_pipe(get_difficulty)
 
-    Token.set_extension('cluster', default=np.nan, force=True)
+    Token.set_extension("cluster", default=np.nan, force=True)
     # Doc.set_extension('cluster_sizes', default=0, force=True)
     # nlp.add_pipe(cluster_words)
     # nlp.add_pipe(exclude_smallest_clusters)
