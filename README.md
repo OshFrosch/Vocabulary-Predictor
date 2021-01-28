@@ -4,25 +4,26 @@ Find the vocabulary you need to learn to understand some article or book.
 ## How to use
 1. Install pipenv
 `pip install pipenv`
-2. Create an empty .env file
-`touch .env`
-3. Install pip dependencies
-`pip install -r requirements.txt`
-4. Download nltk and spacy datasets
+2. Install pip dependencies
+`pipenv install --dev`
+1. Download nltk and spacy datasets
 `. ./download_datasets.sh`
-5. Run
+4. Run
 `pipenv run main`
-6. Test
+5. Test
 `pipenv run test`
-7. Place the dataset in the `src/data` folder:
+6. Place the dataset in the `src/data` folder:
 ```
 unzip arXMLiv_08_2018_no_problem.zip -d ${REPO_ROOT}/src/data
 ```
-8. Preprocess a part of the dataset
+7. Preprocess a part of the dataset
 ```
 cd src/utils/input_utils
 python data_handling.py
 ```
+
+8. Install new dependencies via
+`pipenv install {{package name}}`
 
 
 

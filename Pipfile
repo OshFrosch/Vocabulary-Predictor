@@ -9,9 +9,9 @@ autopep8 = "*"
 coverage = "*"
 pytest = "*"
 black = "*"
+pre-commit = "*"
 
 [packages]
-pre-commit = "*"
 beautifulsoup4 = "*"
 jupyter = "*"
 notebook = "*"

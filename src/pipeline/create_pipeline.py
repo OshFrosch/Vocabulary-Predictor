@@ -1,18 +1,17 @@
 import numpy as np
 import spacy
-from spacy.tokens import Doc, Token
-
-from src.pipeline.pipeline_components.pipe_difficulty import get_difficulty
-from src.pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
-from src.pipeline.pipeline_components.pipe_example_phrase import get_example_phrase
-from src.pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
-from src.pipeline.pipeline_components.pipe_ranking import get_ranking
-from src.pipeline.pipeline_components.pipe_relative_frequency import relative_freq
-from src.pipeline.pipeline_components.pipe_wordcluster import (
+from pipeline.pipeline_components.pipe_difficulty import get_difficulty
+from pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
+from pipeline.pipeline_components.pipe_example_phrase import get_example_phrase
+from pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
+from pipeline.pipeline_components.pipe_ranking import get_ranking
+from pipeline.pipeline_components.pipe_relative_frequency import relative_freq
+from pipeline.pipeline_components.pipe_wordcluster import (
     cluster_words,
     exclude_smallest_clusters,
 )
-from src.pipeline.pipeline_components.pipe_wordcount import wordcount
+from pipeline.pipeline_components.pipe_wordcount import wordcount
+from spacy.tokens import Doc, Token
 
 
 def create_pipeline():
