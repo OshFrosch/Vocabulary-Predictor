@@ -35,7 +35,7 @@ python data_handling.py
 
 ### Libraries / Existing Code Fragements
 The main processing steps are performed with the help of spaCy, nltk, regex and wordfreq.
-For a complete list of project dependencies look at the [requirements.txt](requirements.txt)
+For a complete list of project dependencies look at the [Pipfile](Pipfile)
 
 Apart from that no other existing code fragments were used.
 
