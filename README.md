@@ -117,6 +117,11 @@ We did not tackle subgoal 4 yet:
 #### Overall ranking
 We implemented a basic overall ranking that is calculated from the difficulty and the relative frequency with one weighting factor for each of them.
 
+#### Optional task 3: extracting example sentences
+The extraction one example sentence is implementent in an efficient way. If several sentences are available in the original
+input text, the sentence which is the easiest to understand is taken. We measue thiy by adding the difficulty of all
+words in the sentences together and take the sentences with the smallest cumulated difficulty. 
+
 ### Future Planning:
 
 #### Reflecting
