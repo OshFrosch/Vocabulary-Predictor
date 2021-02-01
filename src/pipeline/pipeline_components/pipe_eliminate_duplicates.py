@@ -6,13 +6,10 @@ def elim_dup(doc):
     for token in doc:
         if not token._.is_excluded:
             if token.lemma_ in already_appeared.keys():
-                already_appeared[token.lemma_] += 1
+                already_appeared[token.lemma_]._.appearance += 1
                 token._.is_excluded = True
             else:
-                already_appeared[token.lemma_] = 1
-
-    for token in doc:
-        if not token._.is_excluded:
-            token._.appearance = already_appeared[token.lemma_]
+                token._.appearance = 1
+                already_appeared[token.lemma_] = token
 
     return doc

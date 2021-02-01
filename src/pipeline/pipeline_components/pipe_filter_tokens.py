@@ -6,7 +6,7 @@ def filter_tokens(doc):
         if not token.is_alpha or token.is_stop:
             token._.is_excluded = True
         # filter part-of-speech
-        elif token.pos_ not in ["NOUN", "VERB", "ADJ", "ADV"]:  # ADV?
+        elif token.pos_ not in ["NOUN", "VERB", "ADJ"]:  # ADV?
             token._.is_excluded = True
         # filter entities
         elif token.ent_type != 0:
