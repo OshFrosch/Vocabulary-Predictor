@@ -1,3 +1,4 @@
+@@ -1,178 +1,189 @@
 # vocabulary-extraction
 Find the vocabulary you need to learn to understand some article or book.
 
@@ -82,6 +83,18 @@ The difficulty of the words is based on their overall frequency in the given lan
 
 - [x] [numerical difficulty estimation](/src/pipeline/pipeline_components/pipe_difficulty.py)
 - [ ] hyperparameter tuning of the ranking algorithm (data driven)
+
+**Evaluation:**
+
+We will evaluate the word difficulty ranking by applying the word diffculty estimator onto a constructed text, made out of already labeled data, and comparing the results.
+This is currently still [in development](/src/notebooks/create_evaluation_reference.ipynb).
+
+We use [this dataset](https://sites.google.com/view/cwisharedtask2018/home) supplied by the University of Hamburg for this task. The labeled Wikipedia sentences should be relatively similiar to words used in scientific papers.
+
+The correctness of our solution is computed per word with the following formula
+<img src="https://render.githubusercontent.com/render/math?math=\left |(dif_{ref}-dif_{gen})  \right |*dif_{gen}">
+where dif_ref is our reference value for difficulty between 0 and 1 and dif_gen is our computed difficulty value between 0 and 1.
+This weighting penalizes incorrectly classifying difficult words as easy and not the other way round. This is intentional to ensure that the evaluated algorithm ranks difficult words as such without missing some. A user might be slightly annoyed getting some easy words ranked as diffcult but will lose trust in the algorithm if difficult words aren't flagged.
 
 #### Subgoal 3: Identification of heavily used words
 > Rare words by nature tend to be important if they are still heavily used. We can identify which words occur above their average, by using a **Bag of Words** or other **statistical** approach. For Example: If **Goalkeeper** has a 1:x appearance in the text but a 1:y overall appearance and x << y then we can infer that this word is relevant in this text.
