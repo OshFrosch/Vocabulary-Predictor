@@ -35,7 +35,7 @@ python data_handling.py
 * Philipp Walz (philipp@walz.tech)
 
 ### Libraries / Existing Code Fragements
-The main processing steps are performed with the help of spaCy, nltk, regex and wordfreq.
+The main processing steps are performed with the help of spaCy, nltk, regex, gensim and wordfreq.
 For a complete list of project dependencies look at the [Pipfile](Pipfile)
 
 Apart from that no other existing code fragments were used.
@@ -112,7 +112,7 @@ of the word in the given language. This metric seems to be promising for further
 > **Goal:** Having a mark on each vocabulary in the list contained in a Key Phrase.
 
 We did not tackle subgoal 4 yet:
-- [ ] Key phrase detection
+- [x] [Key phrase extraction](/src/pipeline/pipeline_components/pipe_keywords.py)
 
 #### Overall ranking
 We implemented a basic overall ranking that is calculated from the difficulty and the relative frequency with one weighting factor for each of them.
@@ -139,9 +139,9 @@ are therefore most relevant to know and comprehend. Which means we still can get
 this problem best. Besides Key Phrase Extractions we want to try out other related approaches to solve this
 subtask as good as possible. Some of our ideas are:
 
-* Clustering wordvectors and weight the vocabs on the size of each cluster. Words being part of a big cluster an therefore a dominant topic of the text will be more relevant for the user.
+- [x] Clustering wordvectors and weight the vocabs on the size of each cluster. Words being part of a big cluster an therefore a dominant topic of the text will be more relevant for the user.
 * Using SVD on input parts to get the relationship of word to their topics and the topics of the input text.
-* Key Phrase Extraction of the given input (data driven?)
+- [x] Key Phrase Extraction of the given input (data driven?)
 
 #### 2. Data driven approach
 Since we have a dataset to work with, we can tune our pipeline according to this dataset. This will hopefully
@@ -168,8 +168,14 @@ The current [pipeline](src/pipeline) should be relatively clear at this point, b
     * [pipe_eliminate_duplicates.py](src/pipeline/pipeline_components/pipe_eliminate_duplicates.py)
     * [pipe_relative_frequency.py](src/pipeline/pipeline_components/pipe_relative_frequency.py)
     * [pipe_difficulty.py](src/pipeline/pipeline_components/pipe_difficulty.py)
+    * [pipe_wordcluster.py](src/pipeline/pipeline_components/pipe_wordcluster.py)
+    * [pip_keywords.py](/src/pipeline/pipeline_components/pipe_keywords.py)
+* ranking:
+    * [ranking](src/pipeline/pipeline_components/pipe_ranking.py)
 * output: [create_df_from_doc.py](src/utils/output_utils/create_df_from_doc.py)
 
+In this overview are many pipeline-steps. We still have to determine which are most important ones and how do we want them to contribute to the ranking.
+For example are the last two steps very similar and xould provide us with almost the same information.
 
 
 ## Data-Analysis
