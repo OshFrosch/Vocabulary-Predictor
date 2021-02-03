@@ -11,6 +11,7 @@ from pipeline.pipeline_components.pipe_wordcluster import (
     exclude_smallest_clusters,
 )
 from pipeline.pipeline_components.pipe_wordcount import wordcount
+from pipeline.pipeline_components.pipe_keywords import check_keyphrases
 from spacy.tokens import Doc, Token
 
 
@@ -39,6 +40,11 @@ def create_pipeline():
     # Doc.set_extension('cluster_sizes', default=0, force=True)
     # nlp.add_pipe(cluster_words)
     # nlp.add_pipe(exclude_smallest_clusters)
+
+    Doc.set_extension('keywords', default=[], force=True)
+    Token.set_extension('is_keyword', default=False, force=True)
+    Token.set_extension('keyword_score', default=0, force=True)
+    nlp.add_pipe(check_keyphrases)
 
     Token.set_extension("ranking", default=0, force=True)
     nlp.add_pipe(get_ranking)
