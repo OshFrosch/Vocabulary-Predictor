@@ -4,6 +4,7 @@ from pipeline.pipeline_components.pipe_difficulty import get_difficulty
 from pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
 from pipeline.pipeline_components.pipe_example_phrase import get_example_phrase
 from pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
+from pipeline.pipeline_components.pipe_keywords import check_keyphrases
 from pipeline.pipeline_components.pipe_ranking import get_ranking
 from pipeline.pipeline_components.pipe_relative_frequency import relative_freq
 from pipeline.pipeline_components.pipe_wordcluster import (
@@ -11,7 +12,6 @@ from pipeline.pipeline_components.pipe_wordcluster import (
     exclude_smallest_clusters,
 )
 from pipeline.pipeline_components.pipe_wordcount import wordcount
-from pipeline.pipeline_components.pipe_keywords import check_keyphrases
 from spacy.tokens import Doc, Token
 
 
@@ -41,9 +41,9 @@ def create_pipeline():
     # nlp.add_pipe(cluster_words)
     # nlp.add_pipe(exclude_smallest_clusters)
 
-    Doc.set_extension('keywords', default=[], force=True)
-    Token.set_extension('is_keyword', default=False, force=True)
-    Token.set_extension('keyword_score', default=0, force=True)
+    Doc.set_extension("keywords", default=[], force=True)
+    Token.set_extension("is_keyword", default=False, force=True)
+    Token.set_extension("keyword_score", default=0, force=True)
     nlp.add_pipe(check_keyphrases)
 
     Token.set_extension("ranking", default=0, force=True)

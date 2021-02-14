@@ -15,7 +15,7 @@ pre-commit = "*"
 beautifulsoup4 = "*"
 jupyter = "*"
 notebook = "*"
-spacy = "*"
+spacy = "==2.3.5"
 nltk = "*"
 matplotlib = "*"
 tqdm = "*"
@@ -23,6 +23,7 @@ pandas = "*"
 wordfreq = "*"
 "pdfminer.six" = "*"
 vocabulary-extraction = {editable = true, path = "."}
+gensim = "*"
 
 [scripts]
 test = "coverage run -m unittest discover -s ./src/tests -p test_*.py"

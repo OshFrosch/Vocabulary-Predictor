@@ -18,7 +18,7 @@ def create_df_from_doc(doc):
                     token._.cluster,
                     token._.keyword_score,
                     token._.ranking,
-                    token._.example_phrase
+                    token._.example_phrase,
                 )
             )
     df = pd.DataFrame(
@@ -32,7 +32,7 @@ def create_df_from_doc(doc):
             "cluster",
             "keyword score",
             "ranking",
-            "example phrase"
+            "example phrase",
         ],
     )
 
