@@ -1,5 +1,6 @@
 import json
 
+import numpy as np
 import pandas as pd
 
 
@@ -35,6 +36,9 @@ def get_dropped_histogram(df, column="difficulty"):
 
 
 def get_difficulty_scatter(df, column="difficulty"):
-    df[(df[column].notnull())].plot.scatter(
-        x="reference_difficulty", y=column, figsize=(8, 6), style="x"
+    plot_df = df[(df[column].notnull())].copy()
+    plot_df["color"] = np.where(plot_df[column] == 8, "Red", "DarkBlue")
+
+    plot_df.plot.scatter(
+        x="reference_difficulty", y=column, c="color", figsize=(8, 6), style="x"
     )
