@@ -2,49 +2,44 @@ from bs4 import BeautifulSoup
 from pdfminer.high_level import extract_text
 
 
-def extract_from_file(filepath: str):
+def extract_raw(filepath: str):
     """
-    returns text from a given file (txt, PDF, HTML, image)
+    returns text from raw text file
     :param filepath:
     :return: text as string
     """
+    file = open(filepath, "rt")
+    text = file.read()
+    file.close()
+    return text
 
-    # txt-file
-    if filepath.endswith(".txt"):
-        file = open(filepath, "rt")
-        text = file.read()
-        file.close()
-        return text
 
-    # PDF-file
-    if filepath.endswith(".pdf"):
-        text = extract_text(filepath)
-        return text
+def extract_html(filepath: str):
+    """
+    returns text from a html file
+    :param filepath:
+    :return: text as string
+    """
+    with open(filepath, "rt") as file:
+        soup = BeautifulSoup(file.read(), features="html.parser")
 
-    if filepath.endswith(".html"):
-        with open(filepath, "rt") as file:
-            soup = BeautifulSoup(file.read(), features="html.parser")
+    # get text
+    for script in soup(["math", "footer"]):
+        script.extract()
 
-        # get text
-        for script in soup(["math", "footer"]):
-            script.extract()
+    # get text
+    text = soup.get_text()
+    text = text.lower()
+    text = text.replace("\n", " ")
 
-        # get text
-        text = soup.get_text()
-        text = text.lower()
-        text = text.replace("\n", " ")
+    return text
 
-        return text
 
-    # TODO
-    if (
-        filepath.endswith(".jpeg")
-        or filepath.endswith(".jpg")
-        or filepath.endswith(".png")
-    ):
-        print("text can not be extracted from images yet")
-        return None
-
-    else:
-        print("file name does not end with eiter .pdf, .txt, .HTML or .image")
-        return None
+def extract_pdf(filepath: str):
+    """
+    returns text from a PDF file
+    :param filepath:
+    :return: text as string
+    """
+    text = extract_text(filepath)
+    return text

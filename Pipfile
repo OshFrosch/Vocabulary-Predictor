@@ -24,6 +24,8 @@ wordfreq = "*"
 "pdfminer.six" = "*"
 vocabulary-extraction = {editable = true, path = "."}
 gensim = "*"
+yake = "*"
+openpyxl = "*"
 
 [scripts]
 test = "coverage run -m unittest discover -s ./src/tests -p test_*.py"
