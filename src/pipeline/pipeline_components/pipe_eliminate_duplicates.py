@@ -8,8 +8,11 @@ def elim_dup(doc):
             if token.lemma_ in already_appeared.keys():
                 already_appeared[token.lemma_]._.appearance += 1
                 token._.is_excluded = True
+                doc._.included_wordcount -= 1
             else:
                 token._.appearance = 1
                 already_appeared[token.lemma_] = token
+
+    print(f'{doc._.included_wordcount} words in vocabulary without duplicates')
 
     return doc

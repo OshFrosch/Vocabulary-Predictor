@@ -1,27 +1,18 @@
-from gensim.summarization import keywords
+from yake import KeywordExtractor
 
 
 def check_keyphrases(doc):
     """extracting keywords out of the text and assigning each token
     a keyword score based on the simalarity"""
 
-    kw = keywords(doc.text, split=True)
+    kw_extractor = KeywordExtractor(lan="en", n=1, top=100)
+    kw = dict(kw_extractor.extract_keywords(doc.text))
 
     keywords_token = []
     already_in_list = []
     for token in doc:
-        if token.text in kw:
-            token._.is_keyword = True
-            if token.text not in already_in_list:
-                keywords_token.append(token)
-                already_in_list.append(token.text)
-    doc._.keywords = keywords_token
-
-    # assign keyword score
-    for token in doc:
-        for kw in keywords_token:
-            kw_score = token.similarity(kw)
-            if kw_score > token._.keyword_score:
-                token._.keyword_score = kw_score
+        if not token._.is_excluded:
+            if token.lemma_ in kw.keys():
+                token._.keyword_score = 1 - kw[token.lemma_]
 
     return doc

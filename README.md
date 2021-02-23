@@ -171,7 +171,7 @@ The current [pipeline](src/pipeline) should be relatively clear at this point, b
     * [pipe_wordcluster.py](src/pipeline/pipeline_components/pipe_wordcluster.py)
     * [pip_keywords.py](/src/pipeline/pipeline_components/pipe_keywords.py)
 * ranking:
-    * [ranking](src/pipeline/pipeline_components/pipe_ranking.py)
+    * [ranking]()
 * output: [create_df_from_doc.py](src/utils/output_utils/create_df_from_doc.py)
 
 In this overview are many pipeline-steps. We still have to determine which are most important ones and how do we want them to contribute to the ranking.

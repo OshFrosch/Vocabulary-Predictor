@@ -13,7 +13,7 @@ def get_example_phrase(doc):
         for token in sentence:
             if not token._.is_excluded:
                 token_sentences[token.text] = [(sentence.text, sentence_difficulty)]
-            elif token.text in token_sentences.keys():
+            elif token.text in token_sentences:
                 token_sentences[token.text].append((sentence.text, sentence_difficulty))
 
     for token in doc:
@@ -21,6 +21,7 @@ def get_example_phrase(doc):
             phrases = token_sentences[token.text]
             best_phrase = min(phrases, key=lambda item: (item[1]))[0]
             token._.example_phrase = best_phrase
+
     return doc
 
 
