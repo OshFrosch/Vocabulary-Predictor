@@ -17,7 +17,8 @@ def predict_outputsize(df):
     i = 1
     loc = 0
     offset = 0
-    last = False
+    last = True
+    last_loc = 0
     while loc <= n:
 
         print(f'Word position {loc}:')
