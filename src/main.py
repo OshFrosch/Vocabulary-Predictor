@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
     ######
     output_mode = ["--interactive", "--all", "-size"]
-    output_size = 0
+    output_size = 50
     ######
 
     if args.raw:
