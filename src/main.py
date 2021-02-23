@@ -3,6 +3,7 @@ import pathlib
 
 from pipeline.create_pipeline import create_pipeline
 from utils.input_utils.text_extraction import extract_html, extract_pdf, extract_raw
+from utils.output_utils.create_csv_from_df import create_csv_from_df
 from utils.output_utils.create_df_from_doc import create_df_from_doc
 from utils.output_utils.predict_output_size import predict_outputsize
 
@@ -43,7 +44,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     ######
-    output_mode = ['--interactive', '--all', '-size']
+    output_mode = ["--interactive", "--all", "-size"]
     output_size = 0
     ######
 
@@ -59,12 +60,10 @@ if __name__ == "__main__":
 
     doc = pipeline(text)
     df = create_df_from_doc(doc)
-    if output_mode == 'interactive':
+    if output_mode == "interactive":
         df = predict_outputsize(df)
-    elif output_mode == 'size':
+    elif output_mode == "size":
         df[:output_size]
 
-    if args.to_csv:
-        df.to_csv(args.to_csv, index=False)
-    elif args.to_excel:
-        df.to_excel(args.to_excel, index=False)
+    create_csv_from_df(df, args.to_csv, output_size)
+    # TODO: @Phillip excel-arguments are not needed (just export as CSV)
