@@ -16,6 +16,7 @@ def create_df_from_doc(doc):
                     token._.difficulty,
                     token._.relativ_freq,
                     token._.keyword_score,
+                    token._.example_phrase,
                 )
             )
 
@@ -28,11 +29,8 @@ def create_df_from_doc(doc):
             "difficulty",
             "relative freqency",
             "keyword score",
+            "example phrase",
         ],
-    )
-
-    df[["difficulty_rank", "keyword_rank"]] = df[["difficulty", "keyword score"]].rank(
-        ascending=False
     )
 
     df["overall_ranking"] = (
