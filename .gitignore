@@ -142,3 +142,6 @@ dmypy.json
 src/data/no_problem
 
 .isort.cfg
+
+# output-folder
+output/
