@@ -42,6 +42,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    ######
+    output_mode = ['--interactive', '--all', '-size']
+    output_size = 0
+    ######
+
     if args.raw:
         text = extract_raw(args.input_file_path)
     elif args.html:
@@ -54,7 +59,10 @@ if __name__ == "__main__":
 
     doc = pipeline(text)
     df = create_df_from_doc(doc)
-    df = predict_outputsize(df)
+    if output_mode == 'interactive':
+        df = predict_outputsize(df)
+    elif output_mode == 'size':
+        df[:output_size]
 
     if args.to_csv:
         df.to_csv(args.to_csv, index=False)
