@@ -2,7 +2,14 @@ from nltk.corpus import wordnet
 
 
 def add_infos_to_df(df, limit=50, limit_examples=5, limit_definitions=5):
-
+    """
+    This function adds synonyms, definitions and examples to every vocabulary in the df
+    :param df: input dataframe with one column named 'token'
+    :param limit: limit for number of words that should be given out
+    :param limit_examples: limit for number of examples that is maximally given for every word
+    :param limit_definitions: limit for number of examples that is maximally given for every word
+    :return: df
+    """
     df = df[["token", "example phrase"]].head(limit)
     df.columns = ["word", "example sentence"]
 
