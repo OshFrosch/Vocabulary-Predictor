@@ -15,7 +15,7 @@ setup(
     ),
     install_requires=[
         "beautifulsoup4>=4.9.3,<5.0.0",
-        "en-core-web-lg",
+        # "en-core-web-lg",
         "nltk>=3.5,<4.0.0",
         "numpy>=1.20.1,<2.0.0",
         "pandas>=1.2.2<2.0.0",
@@ -25,7 +25,7 @@ setup(
         "matplotlib>=3.3.4,<4.0.0",
         "yake>=0.4.4,<1.0.0",
     ],
-    dependency_links=[
-        "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-2.3.1/en_core_web_lg-2.3.1.tar.gz#egg=en_core_web_lg"
-    ],
+    # dependency_links=[
+    #     "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-2.3.1/en_core_web_lg-2.3.1.tar.gz#egg=en_core_web_lg"
+    # ],
 )

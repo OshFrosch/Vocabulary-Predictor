@@ -23,7 +23,6 @@ pandas = "*"
 wordfreq = "*"
 "pdfminer.six" = "*"
 vocabulary-extraction = {editable = true, path = "."}
-gensim = "*"
 yake = "*"
 openpyxl = "*"
 dask = {extras = ["distributed"], version = "*"}
