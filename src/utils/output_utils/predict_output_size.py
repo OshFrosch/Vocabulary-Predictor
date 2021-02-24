@@ -3,12 +3,14 @@ def predict_outputsize(df):
     tries to predict the volume the user doesn't know by asking questions"""
 
     def user_knows_vocab(s):
-        response = input(f'Can you translate this word:   {s}   [y/n]  ')
+        response = input(f"Can you translate this word:   {s}   [y/n]  ")
 
-        while response not in ['y', 'n']:
-            response = input('Unexpected input. Try again.\n' +
-                             f'Can you translate this word:   {s}   [y/n]  ')
-        return response == 'y'
+        while response not in ["y", "n"]:
+            response = input(
+                "Unexpected input. Try again.\n"
+                + f"Can you translate this word:   {s}   [y/n]  "
+            )
+        return response == "y"
 
     n = len(df)
     dict_word_known = {}
@@ -21,11 +23,11 @@ def predict_outputsize(df):
     last_loc = 0
     while loc <= n:
 
-        print(f'Word position {loc}:')
+        print(f"Word position {loc}:")
         if loc in dict_word_known:
             result = dict_word_known[loc]
         else:
-            result = user_knows_vocab(df.iloc[loc]['lemma'])
+            result = user_knows_vocab(df.iloc[loc]["lemma"])
             dict_word_known[loc] = result
 
         if result:
@@ -41,4 +43,4 @@ def predict_outputsize(df):
         last_loc = loc
         loc = (2 ** i) - 1 + offset
 
-    return df[:last_loc - 1]
+    return last_loc - 1
