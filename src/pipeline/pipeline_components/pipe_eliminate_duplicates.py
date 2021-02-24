@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 def elim_dup(doc):
     """eliminates all duplicates and counts the appearance of the included words"""
 
@@ -13,6 +18,6 @@ def elim_dup(doc):
                 token._.appearance = 1
                 already_appeared[token.lemma_] = token
 
-    print(f'{doc._.included_wordcount} words in vocabulary without duplicates')
+    logger.info(f"{doc._.included_wordcount} words in vocabulary without duplicates")
 
     return doc

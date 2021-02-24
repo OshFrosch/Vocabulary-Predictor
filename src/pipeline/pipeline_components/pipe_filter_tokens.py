@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 def filter_tokens(doc):
     """filters all tokens by stopwords, P-O-S and entities"""
 
@@ -7,7 +12,7 @@ def filter_tokens(doc):
             token._.is_excluded = True
 
         # filter part-of-speech
-        elif token.pos_ not in ['NOUN', 'VERB', 'ADJ']:
+        elif token.pos_ not in ["NOUN", "VERB", "ADJ"]:
             token._.is_excluded = True
 
         # filter entities
@@ -18,6 +23,6 @@ def filter_tokens(doc):
         else:
             doc._.included_wordcount += 1
 
-    print(f'{doc._.included_wordcount} words in vocabulary')
+    logger.info(f"{doc._.included_wordcount} words in vocabulary")
 
     return doc
