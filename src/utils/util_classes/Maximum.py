@@ -1,4 +1,4 @@
-class Maximum():
+class Maximum:
     def __init__(self, initial_value):
         self.value = initial_value
 

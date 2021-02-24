@@ -1,6 +1,6 @@
-from wordfreq import word_frequency
 from utils.util_classes.Maximum import Maximum
 from utils.util_classes.Minimum import Minimum
+from wordfreq import word_frequency
 
 
 def relative_freq(doc):
@@ -15,7 +15,7 @@ def relative_freq(doc):
 
     for token in doc:
         if not token._.is_excluded:
-            overall_word_freq = word_frequency(token.lemma_, 'en')
+            overall_word_freq = word_frequency(token.lemma_, "en")
 
             if overall_word_freq == 0:
                 calculate_last.append(token)
