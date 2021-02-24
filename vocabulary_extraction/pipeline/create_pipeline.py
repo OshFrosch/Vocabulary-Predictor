@@ -1,13 +1,26 @@
 import numpy as np
 import spacy
-from pipeline.pipeline_components.pipe_difficulty import get_difficulty
-from pipeline.pipeline_components.pipe_eliminate_duplicates import elim_dup
-from pipeline.pipeline_components.pipe_example_phrase import get_example_phrase
-from pipeline.pipeline_components.pipe_filter_tokens import filter_tokens
-from pipeline.pipeline_components.pipe_keywords import check_keyphrases
-from pipeline.pipeline_components.pipe_relative_frequency import relative_freq
-from pipeline.pipeline_components.pipe_wordcount import wordcount
 from spacy.tokens import Doc, Token
+
+from vocabulary_extraction.pipeline.pipeline_components.pipe_difficulty import (
+    get_difficulty,
+)
+from vocabulary_extraction.pipeline.pipeline_components.pipe_eliminate_duplicates import (
+    elim_dup,
+)
+from vocabulary_extraction.pipeline.pipeline_components.pipe_example_phrase import (
+    get_example_phrase,
+)
+from vocabulary_extraction.pipeline.pipeline_components.pipe_filter_tokens import (
+    filter_tokens,
+)
+from vocabulary_extraction.pipeline.pipeline_components.pipe_keywords import (
+    check_keyphrases,
+)
+from vocabulary_extraction.pipeline.pipeline_components.pipe_relative_frequency import (
+    relative_freq,
+)
+from vocabulary_extraction.pipeline.pipeline_components.pipe_wordcount import wordcount
 
 
 def create_pipeline():

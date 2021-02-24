@@ -1,6 +1,10 @@
 import os
 
-from src.utils.input_utils.text_extraction import extract_html, extract_pdf, extract_raw
+from vocabulary_extraction.utils.input_utils.text_extraction import (
+    extract_html,
+    extract_pdf,
+    extract_raw,
+)
 
 path = os.path.join(os.path.dirname(__file__))
 

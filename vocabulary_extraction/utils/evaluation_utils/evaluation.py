@@ -7,9 +7,12 @@ import numpy as np
 import pandas as pd
 import spacy
 from bs4 import BeautifulSoup
-from pipeline.create_pipeline import create_pipeline
-from utils.input_utils.text_extraction import extract_from_file
-from utils.output_utils.create_df_from_doc import create_df_from_doc
+
+from vocabulary_extraction.pipeline.create_pipeline import create_pipeline
+from vocabulary_extraction.utils.input_utils.text_extraction import extract_from_file
+from vocabulary_extraction.utils.output_utils.create_df_from_doc import (
+    create_df_from_doc,
+)
 
 nlp = spacy.load("en_core_web_lg")
 

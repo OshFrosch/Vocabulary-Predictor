@@ -1,7 +1,7 @@
 import os
 import random
 
-from text_extraction import extract_from_file
+from vocabulary_extraction.utils.input_utils.text_extraction import extract_from_file
 
 
 def preprocess_html_files(number: int, input: str, output: str):

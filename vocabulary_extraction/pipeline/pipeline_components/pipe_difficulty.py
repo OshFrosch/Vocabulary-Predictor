@@ -1,5 +1,6 @@
-from utils.pipeline_utils.syllable_counter import syllable_count
 from wordfreq import zipf_frequency
+
+from vocabulary_extraction.utils.pipeline_utils.syllable_counter import syllable_count
 
 
 def syl_weight(n):

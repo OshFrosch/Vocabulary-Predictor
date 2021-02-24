@@ -1,7 +1,7 @@
 # Data directory
-/src/data/no_problem/*
-/src/data/text_files/*
-/src/data/cwishareddataset/*
+/data/no_problem/*
+/data/text_files/*
+/data/cwishareddataset/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -139,7 +139,6 @@ dmypy.json
 
 # VS Code IDE
 .vscode/
-src/data/no_problem
 
 .isort.cfg
 

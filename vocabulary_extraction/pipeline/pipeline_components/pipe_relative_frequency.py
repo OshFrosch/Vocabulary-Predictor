@@ -1,6 +1,7 @@
-from utils.util_classes.Maximum import Maximum
-from utils.util_classes.Minimum import Minimum
 from wordfreq import word_frequency
+
+from vocabulary_extraction.utils.util_classes.Maximum import Maximum
+from vocabulary_extraction.utils.util_classes.Minimum import Minimum
 
 
 def relative_freq(doc):
