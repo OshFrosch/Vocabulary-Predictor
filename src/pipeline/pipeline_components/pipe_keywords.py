@@ -5,7 +5,7 @@ def check_keyphrases(doc):
     """extracting keywords out of the text and assigning each token
     a keyword score based on the simalarity"""
 
-    kw_extractor = KeywordExtractor(lan="en", n=1, top=100)
+    kw_extractor = KeywordExtractor(lan="en", n=1, top=500)
     kw = dict(kw_extractor.extract_keywords(doc.text))
 
     keywords_token = []
