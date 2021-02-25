@@ -1,5 +1,5 @@
 @@ -1,178 +1,189 @@
-# vocabulary-extraction
+# Vocabulary Extraction
 Find the vocabulary you need to learn to understand some article or book.
 
 ## How to use
@@ -154,29 +154,27 @@ generalized on other domains. This tasks could include:
 * Using SVD on corpus to get the relationship of word to their topics and the topics of the input text.
 * Using word vector distances to the keywords (keyword section) of our dataset (dataset specific and therefore not generalizable but still fun)
 
-### High-level Architecture Description
-Our architecture does only consists of our [pipeline](src/pipeline) our [utils](src/utils) for input/output etc.
-and our [tests](src/tests). The data exploration and the running first pipeline can also be found in our [jupyter
-notebooks](src/notebooks).
+## High-level Architecture Description
+Our architecture consists out of our [main pipeline](vocabulary_extraction/pipeline), [utils](vocabulary_extraction/utils) for input/output etc.
+and our [tests](vocabulary_extraction/tests). The data exploration and pipeline exploration can also be found in our [jupyter
+notebooks](notebooks).
 
-The current [pipeline](src/pipeline) should be relatively clear at this point, but has this overview:
+**Pipeline overview:**:
 
-* input: [text_extraction.py](src/utils/input_utils/text_extraction.py)
-* pipeline: [create_pipeline.py](src/pipeline/create_pipeline.py)
-    * [pipe_wordcount.py](src/pipeline/pipeline_components/pipe_wordcount.py)
-    * [pipe_filter_tokens.py](src/pipeline/pipeline_components/pipe_filter_tokens.py)
-    * [pipe_eliminate_duplicates.py](src/pipeline/pipeline_components/pipe_eliminate_duplicates.py)
-    * [pipe_relative_frequency.py](src/pipeline/pipeline_components/pipe_relative_frequency.py)
-    * [pipe_difficulty.py](src/pipeline/pipeline_components/pipe_difficulty.py)
-    * [pipe_wordcluster.py](src/pipeline/pipeline_components/pipe_wordcluster.py)
-    * [pip_keywords.py](/src/pipeline/pipeline_components/pipe_keywords.py)
-* ranking:
-    * [ranking]()
-* output: [create_df_from_doc.py](src/utils/output_utils/create_df_from_doc.py)
+* input: [text_extraction.py](vocabulary_extraction/utils/input_utils/text_extraction.py)
+* pipeline: [create_pipeline.py](vocabulary_extraction/pipeline/create_pipeline.py)
+    * [pipe_wordcount.py](vocabulary_extraction/pipeline/pipeline_components/pipe_wordcount.py)
+    * [pipe_filter_tokens.py](vocabulary_extraction/pipeline/pipeline_components/pipe_filter_tokens.py)
+    * [pipe_eliminate_duplicates.py](vocabulary_extraction/pipeline/pipeline_components/pipe_eliminate_duplicates.py)
+    * [pipe_difficulty.py](vocabulary_extraction/pipeline/pipeline_components/pipe_difficulty.py)
+    * [pipe_relative_frequency.py](vocabulary_extraction/pipeline/pipeline_components/pipe_relative_frequency.py)
+    * [pip_keywords.py](vocabulary_extraction/pipeline/pipeline_components/pipe_keywords.py)
+* ranking: [create_df_from_doc.py](vocabulary_extraction/utils/output_utils/create_df_from_doc.py)
 
-In this overview are many pipeline-steps. We still have to determine which are most important ones and how do we want them to contribute to the ranking.
-For example are the last two steps very similar and xould provide us with almost the same information.
-
+**Output/Postprocessing:**
+* interactive: [predict_output_size.py](vocabulary_extraction/utils/output_utils/predict_output_size.py)
+* csv_export: [create_csv_from_df.py](vocabulary_extraction/utils/output_utils/create_csv_from_df.py)
+* extra info: [add infos_to_df.py](vocabulary_extraction/utils/output_utils/add_infos_to_df.py)
 
 ## Data-Analysis
 ### The arXMLiv 08.2018 dataset
