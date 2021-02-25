@@ -17,7 +17,7 @@ def create_df_from_doc(doc):
                     token.lemma_,
                     token._.appearance,
                     token._.difficulty,
-                    token._.relativ_freq,
+                    token._.relative_freq,
                     token._.keyword_score,
                     token._.example_phrase,
                 )
