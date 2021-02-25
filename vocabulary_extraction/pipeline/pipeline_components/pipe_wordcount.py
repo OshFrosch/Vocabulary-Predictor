@@ -4,7 +4,11 @@ logger = logging.getLogger(__name__)
 
 
 def wordcount(doc):
-    """gives an overall word count"""
+    """
+    gives an overall word count
+    :param doc: spaCy Doc
+    :return: spaCy Doc
+    """
 
     for token in doc:
         if token.is_alpha:
