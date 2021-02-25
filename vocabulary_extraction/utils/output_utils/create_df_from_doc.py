@@ -37,7 +37,7 @@ def create_df_from_doc(doc):
     )
 
     df["overall_ranking"] = (
-        3 * df["difficulty"] + df["relative freqency"] + df["keyword score"]
+        3 * df["difficulty"] + df["relative frequency"] + df["keyword score"]
     )
 
     return df.sort_values(by=["overall_ranking"], ascending=False)
