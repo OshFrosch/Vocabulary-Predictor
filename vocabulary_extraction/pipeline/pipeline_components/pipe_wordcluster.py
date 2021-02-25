@@ -13,7 +13,6 @@ def cluster_words(doc):
     :return: spaCy Doc
     """
 
-
     X = [tok.vector for tok in doc if not tok._.is_excluded]
     dist = nltk.cluster.util.cosine_distance
     k = int(round(np.log(doc._.wordcount), 0))  # prototype
