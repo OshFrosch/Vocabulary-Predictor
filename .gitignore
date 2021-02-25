@@ -1,3 +1,8 @@
+# Data directory
+/data/no_problem/*
+/data/text_files/*
+/data/cwishareddataset/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +132,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Pycharm IDE
+.idea
+.DS_Store
+
+# VS Code IDE
+.vscode/
+
+.isort.cfg
+
+# output-folder
+output/

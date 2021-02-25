@@ -1,0 +1,39 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+autopep8 = "*"
+coverage = "*"
+pytest = "*"
+black = "*"
+pre-commit = "*"
+
+[packages]
+beautifulsoup4 = "*"
+jupyter = "*"
+notebook = "*"
+spacy = "==2.3.5"
+nltk = "*"
+matplotlib = "*"
+tqdm = "*"
+pandas = "*"
+wordfreq = "*"
+"pdfminer.six" = "*"
+vocabulary-extraction = {editable = true, path = "."}
+yake = "*"
+openpyxl = "*"
+dask = {extras = ["distributed"], version = "*"}
+
+[scripts]
+test = "coverage run -m unittest discover -s vocabulary_extraction -p test_*.py"
+report = "coverage html"
+main = "python3 -m vocabulary_extraction"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
