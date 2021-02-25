@@ -1,5 +1,0 @@
-Testtext
-
-Autor: Lukas
-
-Dies ist ein Testtext.

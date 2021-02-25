@@ -28,7 +28,7 @@ openpyxl = "*"
 dask = {extras = ["distributed"], version = "*"}
 
 [scripts]
-test = "coverage run -m unittest discover -s ./vocabulary_extraction/tests -p test_*.py"
+test = "coverage run -m unittest discover -s vocabulary_extraction -p test_*.py"
 report = "coverage html"
 main = "python3 -m vocabulary_extraction"
 
