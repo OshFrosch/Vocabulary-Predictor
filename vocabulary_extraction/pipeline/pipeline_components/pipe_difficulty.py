@@ -4,6 +4,11 @@ from vocabulary_extraction.utils.pipeline_utils.syllable_counter import syllable
 
 
 def syl_weight(n):
+    """
+    returns weigth for difficulty based on the syllable count
+    :param n: syllable count
+    :return: weigth
+    """
     w = 0
     for i in range(n):
         w += 0.5 ** (i + 1)
@@ -11,8 +16,11 @@ def syl_weight(n):
 
 
 def get_difficulty(doc):
-    """sets the token attribute ._.difficulty according to
-    its rareness and syllable count"""
+    """
+    sets the token attribute ._.difficulty based on rareness and syllable count
+    :param doc: spaCy Doc
+    :return: spaCy Doc
+    """
 
     for token in doc:
         if not token._.is_excluded:

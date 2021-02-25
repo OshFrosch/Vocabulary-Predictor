@@ -24,12 +24,14 @@ from vocabulary_extraction.pipeline.pipeline_components.pipe_wordcount import wo
 
 
 def create_pipeline():
-    """creates a spacy pipeline containing all
-    steps to extract vocabularies from a text"""
+    """
+    creates a spacy pipeline containing all steps to extract vocabularies from a text
+    :return nlp: spaCy Pipeline
+    """
 
     nlp = spacy.load("en_core_web_lg")
 
-    ## Preprocessing
+    # PREPROCESSING
     # wordcount
     Doc.set_extension("wordcount", default=0, force=True)
     nlp.add_pipe(wordcount)
@@ -39,27 +41,28 @@ def create_pipeline():
     Token.set_extension("is_excluded", default=False, force=True)
     nlp.add_pipe(filter_tokens)
 
-    # eliminate dublicates
+    # eliminate duplicates
     Token.set_extension("appearance", default=np.nan, force=True)
     nlp.add_pipe(elim_dup)
 
-    ## Word difficulty
+    # WORD DIFFICULTY
     # difficulty
     Token.set_extension("difficulty", default=0, force=True)
     nlp.add_pipe(get_difficulty)
 
-    ## Word Relevance
+    # WORD RELEVANCE
     # relative frequency
-    Token.set_extension("relativ_freq", default=np.nan, force=True)
+    Token.set_extension("relative_freq", default=np.nan, force=True)
     nlp.add_pipe(relative_freq)
 
-    # keywordscore
+    # keyword score
     Doc.set_extension("keywords", default=[], force=True)
     Token.set_extension("is_keyword", default=False, force=True)
     Token.set_extension("keyword_score", default=0, force=True)
     nlp.add_pipe(check_keyphrases)
 
-    ## Output
+    # OUTPUT
+    # example phrases
     Token.set_extension("example_phrase", default=[], force=True)
     nlp.add_pipe(get_example_phrase)
 

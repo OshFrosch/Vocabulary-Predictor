@@ -1,8 +1,8 @@
 def get_example_phrase(doc):
     """
     providing an example sentence from the doc for every vocab
-    :param doc: spaCy doc
-    :return: doc with added example_phrase attributes
+    :param doc: spaCy Doc
+    :return: spaCy Doc
     """
 
     token_sentences = {}

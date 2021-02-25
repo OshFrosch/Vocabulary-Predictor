@@ -1,6 +1,9 @@
 def predict_outputsize(df):
-    """Takes all ranked vocabularies and
-    tries to predict the volume the user doesn't know by asking questions"""
+    """
+    Takes all ranked vocabularies and tries to predict the volume the user doesn't know by asking questions
+    :param df: vocabulary df
+    :return: reduced set of vocabulary df
+    """
 
     def user_knows_vocab(s):
         response = input(f"Can you translate this word:   {s}   [y/n]  ")

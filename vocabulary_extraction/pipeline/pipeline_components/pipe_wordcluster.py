@@ -3,8 +3,17 @@ import collections
 import nltk
 import numpy as np
 
+### This Pipeline step is archived and excluded
+
 
 def cluster_words(doc):
+    """
+    cluster all words based on the word vectors into #log(wordcount) clusters
+    :param doc: spaCy Doc
+    :return: spaCy Doc
+    """
+
+
     X = [tok.vector for tok in doc if not tok._.is_excluded]
     dist = nltk.cluster.util.cosine_distance
     k = int(round(np.log(doc._.wordcount), 0))  # prototype
@@ -24,6 +33,12 @@ def cluster_words(doc):
 
 
 def exclude_smallest_clusters(doc):
+    """
+    would exclude all words from the vocabulary belonging to the smallest third of all clusters
+    :param doc: spaCy Doc
+    :return: spaCy Doc
+    """
+
     cluster_count = len(doc._.cluster_sizes)
     smallest_clusters = []
     for i in range(int(cluster_count * 2 / 3), cluster_count):

@@ -4,7 +4,11 @@ logger = logging.getLogger(__name__)
 
 
 def filter_tokens(doc):
-    """filters all tokens by stopwords, P-O-S and entities"""
+    """
+    filters all tokens by stopwords, P-O-S and entities
+    :param doc: spaCy Doc
+    :return: spaCy Doc
+    """
 
     for token in doc:
         # filter stopwords

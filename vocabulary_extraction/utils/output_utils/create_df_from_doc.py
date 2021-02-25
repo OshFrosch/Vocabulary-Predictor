@@ -2,8 +2,11 @@ import pandas as pd
 
 
 def create_df_from_doc(doc):
-    """creates a df with of all included tokens
-    with their attributes of the vocabulary list"""
+    """
+    creates a df with of all included tokens with their attributes created in the pipeline of the vocabulary list
+    :param doc: spaCy Doc from pipeline instance
+    :return df: sorted pandas.DataFrame
+    """
 
     data = []
     for token in doc:
