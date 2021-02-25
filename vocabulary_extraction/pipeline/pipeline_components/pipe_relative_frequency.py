@@ -1,5 +1,6 @@
 from wordfreq import word_frequency
 
+from vocabulary_extraction.utils import tf_values, total_tf_values
 from vocabulary_extraction.utils.util_classes.Maximum import Maximum
 from vocabulary_extraction.utils.util_classes.Minimum import Minimum
 
