@@ -21,7 +21,8 @@ def relative_freq(doc):
 
     for token in doc:
         if not token._.is_excluded:
-            overall_word_freq = word_frequency(token.lemma_, "en")
+            # overall_word_freq = word_frequency(token.lemma_, "en")
+            overall_word_freq = float(tf_values[token.text]) / total_tf_values
 
             if overall_word_freq == 0:
                 calculate_last.append(token)
