@@ -27,7 +27,7 @@ def create_df_from_doc(doc):
             "lemma",
             "appearance",
             "difficulty",
-            "relative freqency",
+            "relative frequency",
             "keyword score",
             "example phrase",
         ],
