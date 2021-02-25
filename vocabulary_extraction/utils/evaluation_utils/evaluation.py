@@ -9,7 +9,7 @@ import spacy
 from bs4 import BeautifulSoup
 
 from vocabulary_extraction.pipeline.create_pipeline import create_pipeline
-from vocabulary_extraction.utils.input_utils.text_extraction import extract_from_file
+from vocabulary_extraction.utils.input_utils.text_extraction import extract_raw
 from vocabulary_extraction.utils.output_utils.create_df_from_doc import (
     create_df_from_doc,
 )
@@ -77,12 +77,14 @@ def get_keyword_results(path):
     keywords = get_keywords(path)
 
     if len(keywords) > 0:
-        pipeline = create_pipeline()
-        text = extract_from_file(path)
-        doc = pipeline(text)
-        df = create_df_from_doc(doc)
+        text = extract_raw(path)
+        if len(text) < 50000:
+            pipeline = create_pipeline()
 
-        return df[df["token"].astype("string").isin(keywords)]
+            doc = pipeline(text)
+            df = create_df_from_doc(doc)
+
+            return df[df["token"].astype("string").isin(keywords)]
     return None
 
 
@@ -101,9 +103,11 @@ def get_all_files(basepath):
     files = []
     directories = []
 
+    print(basepath)
     for r, d, f in os.walk(basepath, followlinks=True):
 
         for directory in d:
+
             directories.append(os.path.join(r, directory))
         for file in f:
             if ".html" in file:
