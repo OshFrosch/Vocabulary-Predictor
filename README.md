@@ -1,6 +1,9 @@
 
-# vocabulary-extraction
+# Vocabulary Extraction
 Find the vocabulary you need to learn to understand some article or book.
+The algorithm extracts the most relevant vocabulary which you most likly don't know yet via the foloowing pipeline:
+
+<img width="1350" alt="Bildschirmfoto 2022-08-05 um 16 48 05" src="https://user-images.githubusercontent.com/44783000/183102261-bb0dc566-bb4a-4a43-9b1a-b6ba93e972cf.png">
 
 ## Installation
 1. Download vocabulary_extraction wheel from releases page:  
